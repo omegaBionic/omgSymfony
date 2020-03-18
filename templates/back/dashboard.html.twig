@@ -6,14 +6,22 @@
             <div class="col-md-6">
                 <h1>DASHBOARD</h1>
                 <h2>Liste des évènement</h2>
+                <hr>
+                <h5 class="mb-4">Ajout d'un évènement</h5>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">Ajouter</button>
+                {{ form_end(form) }}
+
             </div>
             <div class="col-md-6">
                 <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Date de création</th>
+                        <th>Nom</th>
+                        <th>Date de création</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -22,6 +30,20 @@
                         <th scope="row">{{ event.id }}</th>
                         <td>{{ event.name }}</td>
                         <td>{{ event.createdAt|date("d/m/Y") }}</td>
+                        <td class="text-right">
+                            <a href="{{ path('back.event.edit', {id: event.id}) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit text-white"></i></a>
+
+                            <form action="{{ path('back.event.delete', {id: event.id}) }}"
+                                  method="post"
+                                  style="display: inline-block"
+                                  onsubmit="return confirm('Supprimer cet évènement ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete_event_' ~ event.id) }}">
+                                <button type="submit" class="btn-sm btn-danger"><span class="fas fa-trash text-white"></span></button>
+
+                            </form>
+
+                        </td>
                     </tr>
                     {% endfor %}
                     </tbody>

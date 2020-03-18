@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container container-center mt-4">
+        <div class="row mt-4 pt-4">
+            <div class="col-md-6">
+                <a href="{{ path('back.dashboard') }}"> &lt; Retour au tableau de bord</a>
+                <h3 class="mt-4">Fiche signalétique</h3>
+                <p>Nom de l'évènement: <b>{{ event.name }}</b></p>
+                <p>Date de création: <b>{{ event.createdAt|date('d/m/Y') }}</b></p>
+            </div>
+            <div class="col-md-6">
+                <h4 class="mt-4">Modification de l'évènement</h4>
+                <hr>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">Enregistrer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

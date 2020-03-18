@@ -14,3 +14,21 @@
 
     <a class="btn btn-outline-primary" href="{{ path('back.dashboard') }}">Tableau de bord</a>
 </div>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success alert-dismissible mt-4">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            X
+        </button>
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('danger') %}
+    <div class="alert alert-danger alert-dismissible mt-4">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            X
+        </button>
+        {{ message }}
+    </div>
+{% endfor %}
