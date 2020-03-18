@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container container-center mt-4">
+        <div class="row mt-4 pt-4">
+            <div class="col-md-6">
+                <h1>DASHBOARD</h1>
+                <h2>Liste des évènement</h2>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Date de création</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+                    <tr>
+                        <th scope="row">{{ event.id }}</th>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.createdAt|date("d/m/Y") }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

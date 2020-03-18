@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Cocur\Slugify\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,12 +12,6 @@ class FrontController extends AbstractController
      */
     public function index()
     {
-        $slugify = new Slugify();
-        $slug = $slugify->slugify('Hello World');
-
-        return $this->render('front/index.html.twig', [
-            'controller_name'   => 'FrontController',
-            'slug'              => $slug
-        ]);
+        return $this->render('front/index.html.twig');
     }
 }

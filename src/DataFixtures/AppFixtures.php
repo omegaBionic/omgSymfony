@@ -11,6 +11,14 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $events = ['virus', 'home-office', 'confinement', 'formation PHP', 'famine', 'décès'];
+
+        foreach ($events as $event) {
+            $e = new Event();
+            $e->setName($event);
+            $e->setCreatedAt(new DateTime());
+            $manager->persist($e);
+        }
 
         $manager->flush();
     }
